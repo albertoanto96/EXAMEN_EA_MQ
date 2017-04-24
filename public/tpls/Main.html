@@ -1,0 +1,116 @@
+<!doctype html>
+<head>
+</head>
+<body >
+<div ng-controller="userCtrl">
+    <ul class="unstyled">
+        <li ng-repeat="user in users | filter:search">
+            <label class="checkbox">
+                <input type="checkbox" ng-model="user.done">
+                <span >Name: {{user.name}} Password: {{user.password}} Titration:{{user.titration}}
+        <li ng-repeat="subject in subjectsd">
+            <label>
+                <span>Name: {{subject.name}} When:{{subject.when}} </span>
+            </label>
+        </li>
+
+                </span>
+            </label>
+        </li>
+    </ul>
+
+    <br><br>
+    <table id="searchTextResults">
+        <tr>
+            <th>Name</th>
+            <th>Pass</th>
+        </tr>
+        <tr ng-repeat="user in users | filter:search">
+            <td>{{user.name}}</td>
+            <td>{{user.password}}</td>
+        </tr>
+    </table>
+    <form ng-submit="userAdd()">
+        <input type="text" ng-model="userName" size="30"
+               placeholder="Add name">
+        <input type="text" ng-model="userPass" size="30"
+               placeholder="Add pass">
+        <select ng-model="usersF">
+            <<option ng-repeat="subjects in subjectsdb">{{subjects.name}}
+        </option>
+        </select>
+            <select ng-model="titration">
+                <option>Telematica</option>
+                <option>Sistemas</option>
+            </select>
+        <input type="text" ng-model="newPass" size="30"
+               placeholder="New password">
+        <input type="text" ng-model="filterDB" size="30"
+               placeholder="Filter subjects by letter">
+        <input type="text" ng-model="search.name" size="30"
+               placeholder="Search">
+        <input class ="button" type="submit" value="Add">
+    </form>
+    <button class ="button" ng-click="remove()">Remove</button>
+    <button class ="button" ng-click="showSubjects()">Show Subjects in Order</button>
+    <button class ="button" ng-click="showList()">Show Users List in Order</button>
+    <button class ="button" ng-click="update()">Update User</button>
+    <button class ="button" ng-click="filterdb()">Filter subjects by letter</button>
+
+    <form ng-submit="addToSubj()">
+        <input type="text" ng-model="userToAdd" size="30"
+               placeholder="Name of the student to add">
+        <select ng-model="subjectToAdd">
+            <option ng-repeat="subjects in subjectsdb">{{subjects.name}}
+            </option>
+        </select>
+        <input class ="button" type="submit" value="Add User to Subject">
+    </form>
+    <form ng-submit="usersSubj()">
+        <select ng-model="usersF">
+            <option>Telematica</option>
+            <option>Sistemas</option>
+        </select>
+        <input class ="button" type="submit" value="See students">
+    </form>
+    <form ng-submit="detailSubj()">
+        <select ng-model="subjL">
+            <<option ng-repeat="subjects in subjectsdb">{{subjects.name}}
+        </option>
+        </select>
+        <input class ="button" type="submit" value="See subject detail">
+    </form>
+    <br><br><br>
+    <li ng-repeat="subject in subjects">
+        <label>
+            <span>Name: {{subject.name}} Number Of Students: {{subject.l}}</span>
+        </label>
+    </li>
+    <ul class="unstyled">
+        <li ng-repeat="subject in subjectsdet">
+            <label>
+                <span>Name: {{subject.name}} Number Of Students: {{subject.users.length}} Period: {{subject.when}}</span>
+            </label>
+        </li>
+    </ul>
+    <div>
+        <form ng-submit="addSubj()">
+            <input ng-model="newsubjname">
+            <select ng-model="newS">
+                <option>Tardor 2017</option>
+                <option>Primavera 2017</option>
+            </select>
+            <input class ="button" type="submit" value="Create new subject">
+        </form>
+
+        <form ng-submit="userdetail()">
+        <p>Nombre del usuario</p>
+        <input ng-model="userN">
+            <input class ="button" type="submit" value="See user detail">
+        </form>
+    </div>
+
+
+    <pn></pn>
+</div>
+</body>
